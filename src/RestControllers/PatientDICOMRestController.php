@@ -23,21 +23,24 @@ class PatientDICOMRestController
      * White list of patient search fields
      */
     private const SUPPORTED_SEARCH_FIELDS = array(
-        "fname",
-        "lname",
-        "ss",
-        "street",
-        "postal_code",
-        "city",
-        "state",
-        "phone_home",
-        "phone_biz",
-        "phone_cell",
-        'postal_contact',
-        'sex',
-        'country_code',
-        "email",
-        "DOB",
+        "DICOM_id",
+	"patient_data_id",
+	"DICOM_path",
+	"filename",
+	"fileModDate",
+	"fileSize",
+	"formatVersion",
+	"width",
+	"height",
+	"bigDepth",
+	"colorType",
+	"fileMetaInformationGroupLength",
+	"FileMetaInformationVersion",
+	"MediaStorageSOPClassUID",
+	"MediaStorageSOPInstanceUID",
+	"TransferSyntaxUID",
+	"ImplementationClassUID",
+	"history_data_id",
     );
 
     public function __construct()
@@ -100,4 +103,3 @@ class PatientDICOMRestController
         return RestControllerHelper::handleProcessingResult($processingResult, 200, true);
     }
 }
-

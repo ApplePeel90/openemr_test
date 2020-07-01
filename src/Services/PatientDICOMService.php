@@ -17,7 +17,7 @@
 namespace OpenEMR\Services;
 
 use OpenEMR\Common\Uuid\UuidRegistry;
-use OpenEMR\Validators\PatientValidator;
+//use OpenEMR\Validators\PatientValidator;
 use OpenEMR\Validators\ProcessingResult;
 
 class PatientDICOMService extends BaseService
@@ -29,7 +29,7 @@ class PatientDICOMService extends BaseService
      */
     private $patient_picture_fallback_id = -1;
 
-    private $patientValidator;
+  //  private $patientValidator;
 
     /**
      * Default constructor.
@@ -37,7 +37,7 @@ class PatientDICOMService extends BaseService
     public function __construct()
     {
         parent::__construct('patient_DICOM');
-        $this->patientValidator = new PatientValidator();
+    //    $this->patientValidator = new PatientValidator();
     }
 
     /**
