@@ -71,6 +71,10 @@ RestConfig::$ROUTE_MAP = array(
         RestConfig::authorization_check("patients", "demo");
         return (new PatientRestController(null))->getAll($_GET);
     },
+    "GET /api/patient_DICOM" => function () {
+        RestConfig::authorization_check("patients", "demo");
+        return (new PatientDICOMRestController())->getAll($_GET);
+    },
     "POST /api/patient" => function () {
         RestConfig::authorization_check("patients", "demo");
         $data = (array)(json_decode(file_get_contents("php://input")));
