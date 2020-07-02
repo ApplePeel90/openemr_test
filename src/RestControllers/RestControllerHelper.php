@@ -13,7 +13,7 @@
 namespace OpenEMR\RestControllers;
 
 use OpenEMR\Services\EncounterService;
-use OpenEMR\RestControllers\RestControllerHelper;
+//\use OpenEMR\RestControllers\RestControllerHelper;
 
 class RestControllerHelper
 {
