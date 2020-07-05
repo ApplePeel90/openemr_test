@@ -103,102 +103,114 @@ class PatientDICOMService
 //        return sqlStatement($sql);
 //    }
 
-//    public function getFreshPid()
-//    {
-//        $pid = sqlQuery("SELECT MAX(pid)+1 AS pid FROM patient_data");
-//
-//        return $pid['pid'] === null ? 1 : $pid['pid'];
-//    }
+   public function getFreshDICOM_id()
+   {
+       $DICOM_id = sqlQuery("SELECT MAX(DICOM_id)+1 AS DICOM_id FROM patient_DICOM");
 
-//    public function insert($data)
-//    {
-//        $fresh_pid = $this->getFreshPid();
-//
-//        $sql = " INSERT INTO patient_data SET";
-//        $sql .= "     pid=?,";
-//        $sql .= "     title=?,";
-//        $sql .= "     fname=?,";
-//        $sql .= "     mname=?,";
-//        $sql .= "     lname=?,";
-//        $sql .= "     street=?,";
-//        $sql .= "     postal_code=?,";
-//        $sql .= "     city=?,";
-//        $sql .= "     state=?,";
-//        $sql .= "     country_code=?,";
-//        $sql .= "     phone_contact=?,";
-//        $sql .= "     dob=?,";
-//        $sql .= "     sex=?,";
-//        $sql .= "     race=?,";
-//        $sql .= "     ethnicity=?";
-//
-//        $results = sqlInsert(
-//            $sql,
-//            array(
-//                $fresh_pid,
-//                $data["title"],
-//                $data["fname"],
-//                $data["mname"],
-//                $data["lname"],
-//                $data["street"],
-//                $data["postal_code"],
-//                $data["city"],
-//                $data["state"],
-//                $data["country_code"],
-//                $data["phone_contact"],
-//                $data["dob"],
-//                $data["sex"],
-//                $data["race"],
-//                $data["ethnicity"]
-//            )
-//        );
-//
-//        if ($results) {
-//            return $fresh_pid;
-//        }
-//
-//        return $results;
-//    }
+       return $DICOM_id['DICOM_id'] === null ? 1 : $DICOM_id['DICOM_id'];
+   }
 
-//    public function update($pid, $data)
-//    {
-//        $sql = " UPDATE patient_data SET";
-//        $sql .= "     title=?,";
-//        $sql .= "     fname=?,";
-//        $sql .= "     mname=?,";
-//        $sql .= "     lname=?,";
-//        $sql .= "     street=?,";
-//        $sql .= "     postal_code=?,";
-//        $sql .= "     city=?,";
-//        $sql .= "     state=?,";
-//        $sql .= "     country_code=?,";
-//        $sql .= "     phone_contact=?,";
-//        $sql .= "     dob=?,";
-//        $sql .= "     sex=?,";
-//        $sql .= "     race=?,";
-//        $sql .= "     ethnicity=?";
-//        $sql .= "     where pid=?";
-//
-//        return sqlStatement(
-//            $sql,
-//            array(
-//                $data["title"],
-//                $data["fname"],
-//                $data["mname"],
-//                $data["lname"],
-//                $data["street"],
-//                $data["postal_code"],
-//                $data["city"],
-//                $data["state"],
-//                $data["country_code"],
-//                $data["phone_contact"],
-//                $data["dob"],
-//                $data["sex"],
-//                $data["race"],
-//                $data["ethnicity"],
-//                $pid
-//            )
-//        );
-//    }
+   public function insert($data)
+   {
+       $fresh_DICOM_id = $this->getFreshDICOM_id();
+
+       $sql = " INSERT INTO patient_DICOM SET";
+       $sql .= "     DICOM_id=?,";
+       $sql .= "     patient_data_id=?,";
+       $sql .= "     DICOM_path=?,";
+       $sql .= "     filename=?,";
+       $sql .= "     fileModDate=?,";
+       $sql .= "     fileSize=?,";
+       $sql .= "     formatVersion=?,";
+       $sql .= "     width=?,";
+       $sql .= "     height=?,";
+       $sql .= "     bigDepth=?,";
+       $sql .= "     colorType=?,";
+       $sql .= "     fileMetaInformationGroupLength=?,";
+       $sql .= "     FileMetaInformationVersion=?,";
+       $sql .= "     MediaStorageSOPClassUID=?,";
+       $sql .= "     MediaStorageSOPInstanceUID=?,";
+       $sql .= "     TransferSyntaxUID=?,";
+       $sql .= "     ImplementationClassUID=?,";
+       $sql .= "     history_data_id=?";
+
+       $results = sqlInsert(
+           $sql,
+           array(
+               $fresh_DICOM_id,
+               $data["patient_data_id"],
+               $data["DICOM_path"],
+               $data["filename"],
+               $data["fileModDate"],
+               $data["fileSize"],
+               $data["formatVersion"],
+               $data["width"],
+               $data["height"],
+               $data["bigDepth"],
+               $data["colorType"],
+               $data["fileMetaInformationGroupLength"],
+               $data["FileMetaInformationVersion"],
+               $data["MediaStorageSOPClassUID"],
+               $data["MediaStorageSOPInstanceUID"],
+               $data["TransferSyntaxUID"],
+               $data["ImplementationClassUID"],
+               $data["history_data_id"]
+           )
+       );
+
+       if ($results) {
+           return $fresh_DICOM_id;
+       }
+
+       return $results;
+   }
+
+   public function update($DICOM_id, $data)
+   {
+        $sql = " UPDATE patient_DICOM SET";
+        $sql .= "     patient_data_id=?,";
+        $sql .= "     DICOM_path=?,";
+        $sql .= "     filename=?,";
+        $sql .= "     fileModDate=?,";
+        $sql .= "     fileSize=?,";
+        $sql .= "     formatVersion=?,";
+        $sql .= "     width=?,";
+        $sql .= "     height=?,";
+        $sql .= "     bigDepth=?,";
+        $sql .= "     colorType=?,";
+        $sql .= "     fileMetaInformationGroupLength=?,";
+        $sql .= "     FileMetaInformationVersion=?,";
+        $sql .= "     MediaStorageSOPClassUID=?,";
+        $sql .= "     MediaStorageSOPInstanceUID=?,";
+        $sql .= "     TransferSyntaxUID=?,";
+        $sql .= "     ImplementationClassUID=?,";
+        $sql .= "     history_data_id=?";
+        $sql .= "     where DICOM_id=?";
+
+       return sqlStatement(
+           $sql,
+           array(
+               $data["patient_data_id"],
+               $data["DICOM_path"],
+               $data["filename"],
+               $data["fileModDate"],
+               $data["fileSize"],
+               $data["formatVersion"],
+               $data["width"],
+               $data["height"],
+               $data["bigDepth"],
+               $data["colorType"],
+               $data["fileMetaInformationGroupLength"],
+               $data["FileMetaInformationVersion"],
+               $data["MediaStorageSOPClassUID"],
+               $data["MediaStorageSOPInstanceUID"],
+               $data["TransferSyntaxUID"],
+               $data["ImplementationClassUID"],
+               $data["history_data_id"],
+               $DICOM_id
+           )
+       );
+   }
 
     public function getAll($search)
     {
@@ -241,6 +253,21 @@ class PatientDICOMService
         }
 
         return $results;
+    }
+
+
+    public function getById($id)
+    {
+        $sql = "SELECT *
+                FROM patient_DICOM
+                WHERE patient_data_id = ?";
+    
+        return sqlQuery($sql, $id);
+    }
+ 
+    public function delete($DICOM_id)
+    {
+        return sqlStatement("DELETE FROM patient_DICOM WHERE DICOM_id = ?", $DICOM_id);
     }
 
 //    public function getOne()

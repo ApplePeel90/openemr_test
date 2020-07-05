@@ -67,13 +67,56 @@ RestConfig::$ROUTE_MAP = array(
         RestConfig::authorization_check("admin", "users");
         return (new ProviderRestController())->getOne($prid);
     },
-    "GET /api/patient" => function () {
-        RestConfig::authorization_check("patients", "demo");
-        return (new PatientRestController(null))->getAll($_GET);
-    },
+   
     "GET /api/patient_DICOM" => function () {
         RestConfig::authorization_check("patients", "demo");
         return (new PatientDICOMRestController())->getAll($_GET);
+    },
+    "GET /api/patient_DICOM/:pdid" => function ($pdid) {
+        RestConfig::authorization_check("patients", "demo");
+        return (new PatientDICOMRestController())->getOne($pdid);
+    },
+    "POST /api/patient_DICOM" => function () {
+        RestConfig::authorization_check("patients", "demo");
+        $data = (array)(json_decode(file_get_contents("php://input")));
+        return (new PatientDICOMRestController(null))->post($data);
+    },
+    "PUT /api/patient_DICOM/:DICOM_id" => function ($DICOM_id) {
+        RestConfig::authorization_check("patients", "demo");
+        $data = (array)(json_decode(file_get_contents("php://input")));
+        return (new PatientDICOMRestController(null))->put($DICOM_id, $data);
+    },
+    "DELETE /api/patient_DICOM/:pdid" => function ($pdid) {
+        RestConfig::authorization_check("patients", "demo");
+        return (new PatientDICOMRestController())->delete($pdid);
+    },
+
+
+// PATIENT_DICOM
+    "GET /api/patient_DICOM/:pdid" => function ($pdid) {
+        RestConfig::authorization_check("patients", "demo");
+        return (new PatientDICOMRestController())->getOne($pdid);
+    },
+    "POST /api/patient_DICOM" => function () {
+        RestConfig::authorization_check("patients", "demo");
+        $data = (array)(json_decode(file_get_contents("php://input")));
+        return (new PatientDICOMRestController(null))->post($data);
+    },
+    "PUT /api/patient_DICOM/:DICOM_id" => function ($DICOM_id) {
+        RestConfig::authorization_check("patients", "demo");
+        $data = (array)(json_decode(file_get_contents("php://input")));
+        return (new PatientDICOMRestController(null))->put($DICOM_id, $data);
+    },
+    "DELETE /api/patient_DICOM/:DICOM_id" => function ($DICOM_id) {
+        RestConfig::authorization_check("patients", "demo");
+        return (new PatientDICOMRestController())->delete($DICOM_id);
+    },
+ 
+
+//---------PATIENT
+    "GET /api/patient" => function () {
+        RestConfig::authorization_check("patients", "demo");
+        return (new PatientRestController(null))->getAll($_GET);
     },
     "POST /api/patient" => function () {
         RestConfig::authorization_check("patients", "demo");
