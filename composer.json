@@ -16,7 +16,7 @@
         "doctrine/common" : "2.10.0",
         "doctrine/couchdb" : "1.0-beta4",
         "doctrine/orm" : "2.6.3",
-        "dompdf/dompdf" : "0.8.3",
+        "dompdf/dompdf" : "1.2.1",
         "ezyang/htmlpurifier" : "4.10.0",
         "knplabs/knp-snappy" : "1.1.0",
         "mobiledetect/mobiledetectlib": "2.8.33",
