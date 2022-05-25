@@ -50,7 +50,7 @@
         "zendframework/zend-session" : "2.8.5",
         "zendframework/zend-json" : "3.1.0",
         "particle/validator": "2.3.4",
-        "guzzlehttp/guzzle": "6.3.3",
+        "guzzlehttp/guzzle": "6.5.6",
         "kamermans/guzzle-oauth2-subscriber": "1.0.6",
         "league/omnipay": "3.0.2",
         "academe/omnipay-authorizenetapi": "3.1.1",
